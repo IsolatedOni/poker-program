@@ -7,14 +7,15 @@ public class DeckOfCards{
 	private String[] descriptionSuit = {"1","2","3","4"};
   // private String[] descriptionRank = {"Ace","King","Queen","Jack","Ten","Nine","Eight","Seven","Six","Five","Four","Three","Two"};
   private String[] descriptionRank = {"1","2","3","4","5","6","7","8","9","10","11","12","13"};
-  private String[] hand = new String[5];
+	private String[] hand = new String[5];
+	public ArrayList<String> cards = new ArrayList<String>();
   
   public DeckOfCards(){
 
   }
 
   public void createDeck(){
-    for(int i = 0; i < 4; i++){
+	for(int i = 0; i < 4; i++){
       for(int j = 0; j < 13; j++){
         cards.add(descriptionRank[j] + " of " + descriptionSuit[i]);
       }
@@ -24,7 +25,7 @@ public class DeckOfCards{
   public void shuffle() {
 		int random = 0;
 		int exe = 0;
-		int size = cards.size();
+		int size = cards.length();
 		
 	  for(int i = 0; i < 52; i++) {
 			exe = (int) (Math.random() * size);
@@ -34,9 +35,9 @@ public class DeckOfCards{
 	}
 
   public void drawHand() {
-		Scanner scan = new Scanner(System.in);
+	Scanner scan = new Scanner(System.in);
     for(int i = 0; i < 5; i++){
-      hand.add(cards.get(i));
+      hand[i] = cards.get(i);
       cards.remove(i);    
     } 
 		
@@ -61,7 +62,7 @@ public class DeckOfCards{
       y = 1;
       
       for(int k = 0; k < user.length() - counter; k++){
-        hand.set(Integer.parseInt(user.substring(x,y),cards.get(0));
+        hand[Integer.parseInt(user.substring(x,y)] = cards.get(0));
         cards.remove(0);
         x += 2;
         y += 2;
@@ -84,7 +85,7 @@ public class DeckOfCards{
   }
 
   public String getRank(int num){
-    String cardRank = hand.get(num);
+    String cardRank = hand[num];
     String cR = "";
     if(cardRank.substring(1,2) != " "){
       cR = cardRank.substring(0,2);
@@ -96,9 +97,9 @@ public class DeckOfCards{
   }
 
   public static boolean isFlush(){
-    String suit = card.substring(card.length() - 2, card.length() - 1);
-    for(int i = 1; i < hand.size(); i++){
-      if(hand.get(i).substring(card.length() - 2, card.length() - 1) != suit){
+    String suit = hand[0].substring(hand[0].length() - 2, hand[0].length() - 1);
+    for(int i = 1; i < hand.lenght(); i++){
+      if(hand[i].substring(hand.length() - 2, hand.length() - 1) != suit){
         return false;   
       }
     }
