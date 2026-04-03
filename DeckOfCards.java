@@ -76,14 +76,27 @@ public class DeckOfCards{
         x += 2;
         y += 2;
       }
-
-    for(int i = 0; i < 5; i++){
-      // System.out.println(hand[i]);
-      System.out.println(descriptionRank2[Integer.parseInt(getRank(i)) - 1] + " of " + descriptionSuit2[Integer.parseInt(hand[i].substring(hand[i].length() - 1, hand[i].length())) - 1]);
-    }
     
 	}
-  }
+      for(int j = 0; j < hand.length - 1; j++){
+        int minInd = j;
+
+        for(int a = j + 1; a < hand.length; a++){
+          int current = Integer.parseInt(getRank(a));
+          int next = Integer.parseInt(getRank(minInd));
+          if(current <  next){
+            minInd = a;
+          }
+        }
+        String temp = hand[j];
+            hand[j] = hand[minInd];
+            hand[minInd] = temp;
+      }
+         for(int i = 0; i < 5; i++){
+          // System.out.println(hand[i]);
+          System.out.println(descriptionRank2[Integer.parseInt(getRank(i)) - 1] + " of " + descriptionSuit2[Integer.parseInt(hand[i].substring(hand[i].length() - 1, hand[i].length())) - 1]);
+        }
+    }
 
   public void checkHand(){
     boolean np = false;
@@ -123,13 +136,12 @@ public class DeckOfCards{
   // Implements the method as if hand is an array not an ArrayList
   public static boolean isStraight(){
     for(int i = 1;  i < hand.length; i++){
-       if(Integer.parseInt(hand[i].getRank()) != Integer.parseInt(hand[i - 1].getRank()) + 1){
+       if(Integer.parseInt(getRank(i)) != Integer.parseInt(getRank(i - 1)) + 1){
          return false;
         }
     }
     return true;
   }
-	
-
 
 }
+
