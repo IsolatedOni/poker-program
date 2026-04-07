@@ -143,5 +143,43 @@ public class DeckOfCards{
     return true;
   }
 
+	public static String pairOrKind(){
+		int counter = 0;
+		int counter2 = 0;
+		int index1 = 0;
+		int index2 = 1;
+		int x = 1
+		for(int k = 0; k < 4; k++;){
+			if(Integer.parseInt(getRank(index1)) == Integer.parseInt(getRank(index2))){
+				switch(x){
+					case 1:
+						counter++;
+						index2++;
+						break;
+					case 2:
+						counter2++;
+						index2++;
+						break;
+				}		
+			
+			} else {
+				index1 == index 2;
+				index2 == index2 + 1;
+				x = 2;
+			}
+		}
+		if((counter == 1 && counter2 == 0) || (counter == 0 && counter2 == 1)){
+			return "Pair";
+		}
+		if(counter == 1 && counter2 == 1){
+			return "Two Pair";
+		}
+		if((counter == 2 && counter2 == 0) || (counter == 0 && counter2 == 2)){
+			return "Three of a Kind";
+		}
+		if((counter == 3 && counter2 == 0) || (counter == 0 && counter2 == 3)){
+			return "Four of a kind";
+		}
+	}
 }
 
